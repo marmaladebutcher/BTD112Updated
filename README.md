@@ -25,3 +25,5 @@ How to install and run Bloons Tower Defense 112
     b. Python3: https://www.python.org/downloads/
 
 2. Run `python3 game.py`.
+
+Youtube Demo: https://www.youtube.com/watch?v=7ViA74Ddw-k
