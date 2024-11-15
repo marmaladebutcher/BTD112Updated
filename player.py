@@ -10,17 +10,17 @@ class Player(pygame.sprite.Sprite): #MW: create class for the player
         self.start = False
         self.gameOver = False #MW: the game is not over at the beginning
         self.gameWon = False #MW: the game hasn't been won at the begin
-        self.screen = pygame.display.set_mode((966, 598)) #MW: display the background image
+        self.screen = pygame.display.set_mode((966, 598)) #MW: create window for the game with dimensions of 966 pixels wide by 598 pixels tall 
 
-        self.spriteBloons = pygame.sprite.Group()
-        self.towers = pygame.sprite.Group()
+        self.spriteBloons = pygame.sprite.Group() #MW: create group of sprites for the bloons
+        self.towers = pygame.sprite.Group() #MW: create group of sprites
         self.selectedTower = None #MW: the player hasn't initially selected a tower
         self.bullets = pygame.sprite.Group() #MW: create bullet objects
 
     def checkGameOver(self, group): #MW: create a class that checks if the game is over
         if self.gameOver == True:
             for bloon in group:
-                bloon.speed = 0 #MW: if the game is over, the bloons stop moving (the game stops)
+                bloon.speed = 0 #MW: if the game is over, all bloons stop moving (the game stops)
 
     def checkGameWon(self, group): #MW: create a class that checks if the game has been won
         if self.level == 10 and len(group) == 0: #no bloons left in level 10

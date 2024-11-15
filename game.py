@@ -33,39 +33,39 @@ class Game(object): #MW: create a class for the game
 
     player = Player()
 
-    def __init__(self, width=966, height=598, fps=40):
+    def __init__(self, width=966, height=598, fps=40): #create
         self.width = width
         self.height = height
         self.fps = fps
         self.title = "Bloons Tower Defense 112: By Sarah Wang"
-        pygame.init()
+        pygame.init() #MW: initializes all pygame modules (needed to set up game window, fonts, music, etc.)
 
-        pygame.mixer.music.load('btd_theme.ogg')
-        pygame.mixer.music.play(-1) #-1 means play forever
+        pygame.mixer.music.load('btd_theme.ogg') #MW: load the music file from the module
+        pygame.mixer.music.play(-1) #-1 means play forever #MW: play the background music forever
 
     def initializeMap(self):
-        player.screen.blit(self.map, (0,0))
+        player.screen.blit(self.map, (0,0)) #MW: draw the background image on the screen at the coordinates (0,0) (top left of screen)
 
-    def timerFired(self):
+    def timerFired(self): #MW: creates a function that
         if player.gameOver == False:
 
             #creates bullet if monkey is not on cooldown
             for monkey in player.towers:
                 if "sniper" in monkey.name:
-                    monkey.shootBloons()
+                    monkey.shootBloons() #MW: calls the shootBloons function for the monkey on the field to check if the monkey can shoot a bloon
                     if monkey.ready:
-                        bloon = Tower.furthestBloon(player.spriteBloons)
-                        if bloon != None:
-                            sniperStrength = towerTypes[monkey.name]["damage"]
-                            bloon.updateDamage(sniperStrength,0,player.screen)
+                        bloon = Tower.furthestBloon(player.spriteBloons) #MW: if the monkey's cooldown is finished, the targetted bloon becomes the bloon closest to the end of the map
+                        if bloon != None: #MW: run if such bloon exists
+                            sniperStrength = towerTypes[monkey.name]["damage"] #MW: finds the strength of the tower by looking up the name of the tower and its damage value in the TowerTypes dictionary
+                            bloon.updateDamage(sniperStrength,0,player.screen) #MW: damage the bloon and check if it has been destroyed (if it has been destroyed it will be remobed from the screen)
                 else:
-                    monkey.shootBloons()
+                    monkey.shootBloons() #MW: if the monkey isn't a sniper, it just calls the shootBloons function for the monkey on the field to check if the monkey can shoot a bloon and allows it to shoot bullets at a bloon if it can
 
             #updates bullets (make them move toward targets)
             for bullet in player.bullets:
-                bullet.update(player.screen)
+                bullet.update(player.screen) #MW: moves the bullets across the screen and towards the targetted bloons
 
-    def pressedButton(self, x, y):
+    def pressedButton(self, x, y): #MW:
 
         #pressed start button
         if x > 829 and x < 952 and y > 461 and y < 500:
