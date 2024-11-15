@@ -1,6 +1,6 @@
 from player import Player
 
-player = Player()
+player = Player() 
 
 towerTypes = {
     #cooldown in seconds, range is radius around monkey
