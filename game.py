@@ -1,4 +1,4 @@
-import pygame
+import pygame #MW: import pygame module
 import sys
 from pygame.locals import *
 from bloons import Levels
@@ -29,7 +29,7 @@ Citations:
     http://www.canva.com
 """
 
-class Game(object):
+class Game(object): #MW: create a class for the game
 
     player = Player()
 
