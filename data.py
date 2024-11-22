@@ -1,21 +1,21 @@
-from player import Player
+from player import Player #MW: import the Player class into this file so it has all information regarding the player (ex. current towers placed, number of lives remaining, current level, or available money)
 
-player = Player() 
+player = Player() #MW:creates an instance of the player class
 
-towerTypes = {
+towerTypes = { #MW: towerTypes is a nested dictionary (dictionary within a dictionary) that stores information about the stats of each type of monkey 
     #cooldown in seconds, range is radius around monkey
-    "dartmonkey": 
+    "dartmonkey": #MW: information for the dart monkey tower
         {
-        "price": 250, 
-        "upgrade_price": 200,
-        "cooldown": 0.7, 
-        "damage": 1, 
-        "slow": 0, 
-        "range": 125,
-        "bullet": "basketball",
-        "description": "Cheap starting tower"
+        "price": 250, #MW: price of the tower
+        "upgrade_price": 200, #MW: price to upgrade the tower
+        "cooldown": 0.7, #MW: cooldown time for the tower (how long the monkey has to wait before attacking again)
+        "damage": 1, #MW: damage each bullet of the monkey does to bloons
+        "slow": 0, #MW: how much the monkey slows the bloons down when it hits them
+        "range": 125, #MW: radius of the moneky's range (circle that represents where the monkey can attack)
+        "bullet": "basketball", #MW: the kind of object the monkey uses as a bullet (in this case the monkey throws basketballs)
+        "description": "Cheap starting tower" #MW: description of the monkey (appears when you hover over it in the side bar)
         },
-    "ninjamonkey": 
+    "ninjamonkey": #MW: information for the ninja monkey
         {
         "price": 600, 
         "cooldown": 0.3, 
@@ -26,7 +26,7 @@ towerTypes = {
         "bullet": "shuriken",
         "description": "Fast shuriken shooter"
         },
-    "boat": 
+    "boat": #MW: information for the boat 
         {
         "price": 700, 
         "cooldown": 0.5, 
@@ -37,7 +37,7 @@ towerTypes = {
         "bullet": "bomb",
         "description": "Only place in water"
         },
-    "sniper": 
+    "sniper": #MW: information for the sniper
         {
         "price": 500, 
         "cooldown": 1.0,
@@ -48,7 +48,7 @@ towerTypes = {
         "bullet": "ball",
         "description": "Huge range; pops 4 layers"
         },
-    "gluegunner": 
+    "gluegunner": #MW: information for the glue gunner
         {
         "price": 300, 
         "cooldown": 1.2, 
@@ -59,7 +59,7 @@ towerTypes = {
         "bullet": "glue",
         "description": "Slows bloons with glue"
         },
-    "supermonkey": 
+    "supermonkey": #MW: information for the super monkey
         {
         "price": 3500, 
         "cooldown": 0.001,
@@ -72,7 +72,7 @@ towerTypes = {
         },
 
     #upgraded monkeys    
-    "dartmonkey_upgraded": 
+    "dartmonkey_upgraded": #MW: information for the upgraded version of the dart monkey
         {
         #range increased, cooldown reduced
         "price": 450,
@@ -84,7 +84,7 @@ towerTypes = {
         "bullet": "basketball",
         "description": "Cheap starting tower"
         },
-    "ninjamonkey_upgraded": 
+    "ninjamonkey_upgraded": #MW: information for the upgraded version of the ninja monkey
         {
         #damage increased, range increased, cooldown reduced
         "price": 1100,
@@ -96,7 +96,7 @@ towerTypes = {
         "bullet": "shuriken",
         "description": "Fast shuriken shooter"
         },
-    "boat_upgraded": 
+    "boat_upgraded": #MW: information for the upgraded version of the boat
         {
         #cooldown reduced
         "price": 1000,
@@ -108,7 +108,7 @@ towerTypes = {
         "bullet": "bomb",
         "description": "Only place in water"
         },
-    "sniper_upgraded":
+    "sniper_upgraded": #MW: information for the upgraded version of the sniper
         {
         #cooldown reduced, damage increased
         "price": 1000,
@@ -120,7 +120,7 @@ towerTypes = {
         "bullet": "ball",
         "description": "Huge range; pops 4 layers"
         },
-    "gluegunner_upgraded": 
+    "gluegunner_upgraded": #MW: information for the upgraded version of the glue gunner
         {
         #cooldown reduced, range increased
         "price": 600,
@@ -132,7 +132,7 @@ towerTypes = {
         "bullet": "glue",
         "description": "Slows bloons with glue"
         },
-    "supermonkey_upgraded": 
+    "supermonkey_upgraded": #MW: information for the upgraded version of the super monkey
         {
         #damage increased, range increased
         "price": 6500,
@@ -146,46 +146,46 @@ towerTypes = {
         }
 }
 
-bloons = {
+bloons = { #MW: another nested dictionary that holds the stats of each kind of bloon
     #strength correlates with required number of hits to be killed
-    "red":
+    "red": #MW: information for the red bloon
         {
-        "strength": 1,
-        "speed": 2,
+        "strength": 1, #MW: how much damage the bloon does to the players lives if it reaches the end of the map
+        "speed": 2, #MW: how fast the bloon moves across the map
         },
-    "blue":
+    "blue": #MW: information for the blue bloon
         {
         "strength": 2,
         "speed": 3,
         },
-    "green":
+    "green": #MW: information for the green bloon
         {
         "strength": 3,
         "speed": 4,
         },
-    "yellow":
+    "yellow": #MW: information for the yellow bloon
         {
         "strength": 4,
         "speed": 5,
         },
-    "pink":
+    "pink": #MW: information for the pink bloon
         {
         "strength": 5,
         "speed": 6,
         },
-    "ceramic":
+    "ceramic": #MW: information for the ceramic bloon
         {
         "strength": 20,
         "speed": 4,
         },
-    "moab":
+    "moab": #MW: information for the moab
         {
         "strength": 350,
         "speed": 1,
         },
 }
 
-bloonColors = {
+bloonColors = { #MW: dictionary holding the names of all colours of bloons (excluding ceramic and moab)
     1: "red", 
     2: "blue", 
     3: "green",
@@ -193,9 +193,9 @@ bloonColors = {
     5: "pink"
 }
 
-levels = {
+levels = { #MW: a dictionary containing lists that contain information for each level (each index of the list says how many balloons there are for each tyoe)
     0: [],
-    1: [(30,"red"), (10, "blue")], 
+    1: [(30,"red"), (10, "blue")], #MW: for example, in level one, there are 30 red balloons and 10 blue balloons
     2: [(30,"red"), (25,"blue"), (5, "green")], 
     3: [(15,"red"), (25,"blue"), (25,"red"), (20,"green")], 
     4: [(10,"red"), (15, "blue"), (20, "green"), (20, "yellow")],
@@ -210,12 +210,12 @@ levels = {
     10: [(1, "moab"), (10, "ceramic")]
 }
 
-class Coord(object):
+class Coord(object): #MW: create a class containing waypoints for each map (waypoints tell the bloons what direction to face so they can follow the path of the map)
 
     #hardcoded waypoint values for map 1
-    waypoints = {
-    1: (range(173-3,173+4), "left"), 
-    2: (range(616-3,616+4),"up"), 
+    waypoints = { #MW: dictionary containing all waypoints for the first map, range is used to create a set of coordinates
+    1: (range(173-3,173+4), "left"), #MW: for example, the first waypoint's x coordinate is within the range of 173-3 to 173+4 and the bloon should be facing left when its x coordinate is within that range (in game.py the x coordinate is compared to these values because going left is in the x direction)
+    2: (range(616-3,616+4),"up"), #MW: in this gas, the second waypoint's y coordinate is within the range of 616-3 ot 616+4 and the bloon should be facing up when its y coordinate is within that range (in game.py the y coordinate is compared to these values because going up is in the y direction)
     3: (range(100-3,100+4), "left"),
     4: (range(92-3,92+4), "down"),
     5: (range(300-3,300+4), "right"),
@@ -234,7 +234,7 @@ class Coord(object):
     18: (range(379-3,379+4), "up"),
     19: (range(401-3,401+4), "left")}
 
-    waypoints2 = {
+    waypoints2 = { #MW: dictionary of waypoints for the second map
     1: (range(277-3, 277+4), "down"),
     2: (range(197-3, 197+4), "right"),
     3: (range(551-3, 551+4), "up"),
@@ -250,7 +250,7 @@ class Coord(object):
     }
 
     #coordinates that monkeys can be placed in
-    nonTrackValues = [
+    nonTrackValues = [ #MW: list of lists that contain coordinates that monkeys can be placed on in the first map
     ((0,0), (706,71)),
     ((774,0), (805,502)),
     ((0,71), (65,371)),
@@ -272,7 +272,7 @@ class Coord(object):
     ((0,429), (343,450))
     ]
 
-    nonTrackValues2 = [
+    nonTrackValues2 = [ #MW: list of lists that contain coordinates that monkeys can be placed on in the second map
     ((58,61), (252,532)),
     ((58,61), (252,532)),
     ((199,224), (630,422)),
@@ -281,9 +281,9 @@ class Coord(object):
     ]
 
     #coordinates that the boat can be placed in
-    boatValues = [(0,458), (300,596)]
+    boatValues = [(0,458), (300,596)] #MW: list of lists that contain coordinates that the boat can be placed on in the first map
 
-    boatValues2 = [(310,48), (514,165)]
+    boatValues2 = [(310,48), (514,165)] #MW: list of lists that contain coordinates that the boat can be placed on in the second map
 
     #music button coordinates
-    music = [(917, 953), (536, 572)]
+    music = [(917, 953), (536, 572)] #MW: list of lists that contain coordinates for the music button
