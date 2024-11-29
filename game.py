@@ -1,10 +1,14 @@
+"""
+MW: Madison Wong
+SZ: Samuel Zhu
+"""
 import pygame #MW: import pygame module
 import sys
-from pygame.locals import *
+from pygame.locals import * #MW: import everything from pygame.locals module
 from bloons import Levels
 from towers import Tower
-from player import Player, Music
-from data import Coord, towerTypes, player
+from player import Player, Music #MW: import information from each module so they can be used in this file
+from data import Coord, towerTypes, player 
 
 """
 Citations:
